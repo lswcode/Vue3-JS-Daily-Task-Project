@@ -9,8 +9,12 @@
       <span>Never give up</span>
       <div>天行健 君子以自强不息</div>
       <div>
-        <el-button type="primary" class="start" @click="startFun"> 开始使用</el-button>
-        <el-button type="default" class="about" @click="aboutFun"> 关于</el-button>
+        <el-button type="primary" class="start" @click="startFun">
+          开始使用</el-button
+        >
+        <el-button type="default" class="about" @click="aboutFun">
+          关于</el-button
+        >
       </div>
     </div>
   </div>

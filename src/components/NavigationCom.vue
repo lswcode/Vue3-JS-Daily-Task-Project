@@ -6,11 +6,16 @@
     </router-link>
 
     <div class="right">
-      <div v-for="item in navgationArr" @click="$router.push(item.path)" :key="item.id" :class="item.icon" @mouseover="mouseoverFun">
+      <div
+        v-for="item in navgationArr"
+        @click="$router.push(item.path)"
+        :key="item.id"
+        :class="item.icon"
+        @mouseover="mouseoverFun"
+      >
         {{ item.name }}
       </div>
     </div>
-
   </div>
 </template>
 

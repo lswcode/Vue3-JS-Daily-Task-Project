@@ -10,7 +10,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import NavigationVue from "./components/Navigation.vue";
+import NavigationVue from "./components/NavigationCom.vue";
 
 export default defineComponent({
   components: { NavigationVue },
