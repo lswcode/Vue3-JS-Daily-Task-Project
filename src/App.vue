@@ -1,9 +1,9 @@
 <template>
-  <NavigationVue />
+  <NavigationVue class="nav" />
   <!--缓存用户页面状态，页面跳转后，依旧保持之前的页面状态-->
   <router-view v-slot="{ Component }">
     <keep-alive include="Home">
-      <component :is="Component" />
+      <component :is="Component" class="page" />
     </keep-alive>
   </router-view>
 </template>
@@ -20,4 +20,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.page {
+  padding-top: 60px;
+}
+</style>

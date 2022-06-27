@@ -10,7 +10,7 @@ const routes = [
     },
   },
   {
-    path: "/",
+    path: "/about",
     name: "About",
     component: () => import("@/views/About.vue"),
     meta: {
@@ -18,11 +18,19 @@ const routes = [
     },
   },
   {
-    path: "/",
+    path: "/login",
     name: "Login",
     component: () => import("@/views/Login.vue"),
     meta: {
       title: "Login",
+    },
+  },
+  {
+    path: "/task",
+    name: "Task",
+    component: () => import("@/views/Task.vue"),
+    meta: {
+      title: "Task",
     },
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },

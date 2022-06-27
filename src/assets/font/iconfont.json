@@ -1,0 +1,30 @@
+{
+  "id": "3486625",
+  "name": "daily_task",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "553885",
+      "name": "关于",
+      "font_class": "iconset0103",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "2569869",
+      "name": "登录",
+      "font_class": "denglu",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "21745879",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    }
+  ]
+}
