@@ -2,13 +2,14 @@ import axios from "axios";
 import store from "@/store/index";
 import router from "@/router";
 const request = axios.create({
-  baseURL: process.env.NODE_ENV === "production" ? "https://lswweb.xyz/api" : "api",
+  baseURL:
+    process.env.NODE_ENV === "production" ? "https://lswweb.xyz/api" : "api",
   timeout: 8000, // 请求超时时间
 });
 
 request.interceptors.request.use((req) => {
   const token = store.state.token;
-  req.headers.Authorization = `Bearer ${token}`; // 给指定请求带上token
+  req.headers.Authorization = `Bearer ${token}`;
   return req;
 });
 
