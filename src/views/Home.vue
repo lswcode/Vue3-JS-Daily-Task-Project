@@ -1,10 +1,18 @@
 <template>
-  <div class="home">1111</div>
+  <div class="home">
+    <h1>主页</h1>
+  </div>
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Home",
-  components: {},
-};
+  setup() {
+    return {};
+  },
+});
 </script>
+
+<style lang="less" scoped></style>
