@@ -9,6 +9,22 @@ const routes = [
       title: "Home",
     },
   },
+  {
+    path: "/",
+    name: "About",
+    component: () => import("@/views/About.vue"),
+    meta: {
+      title: "About",
+    },
+  },
+  {
+    path: "/",
+    name: "Login",
+    component: () => import("@/views/Login.vue"),
+    meta: {
+      title: "Login",
+    },
+  },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
