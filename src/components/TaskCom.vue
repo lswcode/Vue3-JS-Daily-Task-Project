@@ -38,7 +38,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .task-com {
   display: flex;
-
+  flex-wrap: wrap;
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -50,6 +50,7 @@ export default defineComponent({
   }
 
   .box-card {
+    margin-top: 17px;
     margin-left: 17px;
     width: 200px;
     height: 210px;

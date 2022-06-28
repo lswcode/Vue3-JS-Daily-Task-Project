@@ -33,7 +33,6 @@ export default defineComponent({
   }
 
   .right {
-    margin-top: 10px;
     margin-left: 195px;
   }
 }
