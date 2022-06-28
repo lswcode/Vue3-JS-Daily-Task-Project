@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div class="top-navigation">
     <router-link :to="{ name: 'Home' }" class="left">
       <img src="@/assets/img/navigation_icon.png" alt="图标" />
       <span>Daily.task</span>
@@ -23,7 +23,7 @@
 import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
-  name: "Navigation",
+  name: "TopNavigationCom",
   setup() {
     const navgationArr = reactive([
       {
@@ -52,7 +52,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.navigation {
+.top-navigation {
   // 顶部导航栏固定定位
   position: fixed;
   top: 0;

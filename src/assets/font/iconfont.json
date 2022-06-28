@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7596925",
+      "name": "24gl-calendar",
+      "font_class": "24gl-calendar",
+      "unicode": "eb3f",
+      "unicode_decimal": 60223
+    },
+    {
+      "icon_id": "20829539",
+      "name": "管理后台",
+      "font_class": "guanlihoutai1",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "22236025",
+      "name": "文章编辑",
+      "font_class": "wenzhangbianji",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "3287473",
+      "name": "创建",
+      "font_class": "icon-",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
       "icon_id": "553885",
       "name": "关于",
       "font_class": "iconset0103",

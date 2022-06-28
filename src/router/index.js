@@ -26,12 +26,24 @@ const routes = [
     },
   },
   {
-    path: "/task",
-    name: "Task",
-    component: () => import("@/views/Task.vue"),
+    path: "/layout",
+    name: "Layout",
+    component: () => import("@/views/Layout.vue"),
     meta: {
-      title: "Task",
+      title: "主页",
     },
+    children: [
+      {
+        path: "", // 默认子路由
+        name: "Task",
+        component: () => import("@/components/TaskCom.vue"),
+      },
+      {
+        path: "analyse",
+        name: "Analyse",
+        component: () => import("@/components/AnalyseCom.vue"),
+      },
+    ],
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];

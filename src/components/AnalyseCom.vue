@@ -1,6 +1,6 @@
 <template>
-  <div class="task">
-    <h1>任务页</h1>
+  <div class="analyse-com">
+    <h1>分析页面</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Task",
+  name: "AnalyseCom",
   setup() {
     return {};
   },
