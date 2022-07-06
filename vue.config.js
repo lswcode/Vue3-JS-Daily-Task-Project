@@ -10,9 +10,7 @@ if (isProduction) {
     axios: "axios", // 在组件中import导入的依赖也会被检测到
   };
   cdn = {
-    css: [
-      "https://cdn.staticfile.org/element-plus/1.0.2-beta.63/theme-chalk/index.css",
-    ],
+    css: ["https://cdn.staticfile.org/element-plus/1.0.2-beta.63/theme-chalk/index.css"],
     js: [
       // vue must at first! vue必须写在最前面
       "https://cdn.staticfile.org/vue/3.2.31/vue.global.prod.min.js", // vue.js
@@ -32,7 +30,7 @@ module.exports = {
     host: "0.0.0.0", // 设置为0.0.0.0后，同个区域网ip的人都可以访问到
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "http://localhost:7777",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "",

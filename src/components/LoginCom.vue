@@ -9,20 +9,10 @@
         <el-input v-model="form.account" placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input
-          v-model="form.password"
-          show-password
-          placeholder="请输入密码"
-        />
+        <el-input v-model="form.password" show-password placeholder="请输入密码" />
       </el-form-item>
     </el-form>
-    <el-button
-      type="primary"
-      @click="onLogin(ruleFormRef)"
-      :loading-icon="Eleme"
-      :loading="form.isLoading"
-      >登录</el-button
-    >
+    <el-button type="primary" @click="onLogin(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">登录</el-button>
     <div class="tips" @click="toRegister">还没有注册账号？新用户注册</div>
   </div>
 </template>
@@ -32,6 +22,7 @@ import { defineComponent, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { Eleme } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
+import { loginApi } from "@/api/api.js";
 export default defineComponent({
   name: "LoginCom",
   setup(props, context) {
@@ -55,17 +46,34 @@ export default defineComponent({
     const router = useRouter();
     const onLogin = async (formEl) => {
       if (!formEl) return;
-      await formEl.validate((valid) => {
+      await formEl.validate(async (valid) => {
         if (valid) {
           form.isLoading = true;
-          setTimeout(() => {
-            ElMessage({
-              message: "登录成功",
-              type: "success",
+          try {
+            const { data } = await loginApi({
+              account: form.account,
+              password: form.password,
             });
-            form.isLoading = false;
-            router.push("/layout");
-          }, 2000);
+            console.log(data);
+            if (data.code == 200) {
+              ElMessage({
+                message: "登录成功",
+                type: "success",
+              });
+              form.isLoading = false;
+              router.push("/layout");
+            } else {
+              ElMessage.warning({
+                message: "登录失败",
+                type: "warning",
+              });
+            }
+          } catch (error) {
+            ElMessage.warning({
+              message: "登录失败",
+              type: "warning",
+            });
+          }
         } else {
           ElMessage.error("登录失败");
         }
