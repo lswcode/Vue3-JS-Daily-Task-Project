@@ -67,6 +67,7 @@ export default defineComponent({
                 message: "登录失败",
                 type: "warning",
               });
+              form.isLoading = false;
             }
           } catch (error) {
             ElMessage.warning({
