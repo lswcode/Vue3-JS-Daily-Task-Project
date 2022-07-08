@@ -7,3 +7,11 @@ export const loginApi = (user) => {
     data: user,
   });
 };
+
+export const registerApi = (user) => {
+  return request({
+    method: "POST",
+    url: "/register",
+    data: user,
+  });
+};

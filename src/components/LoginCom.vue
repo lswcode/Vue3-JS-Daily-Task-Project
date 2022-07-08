@@ -55,16 +55,16 @@ export default defineComponent({
               password: form.password,
             });
             console.log(data);
-            if (data.code == 200) {
+            if (data.code == 10001) {
               ElMessage({
-                message: "登录成功",
+                message: data.msg,
                 type: "success",
               });
               form.isLoading = false;
               router.push("/layout");
             } else {
               ElMessage.warning({
-                message: "登录失败",
+                message: data.msg,
                 type: "warning",
               });
               form.isLoading = false;
@@ -77,6 +77,7 @@ export default defineComponent({
           }
         } else {
           ElMessage.error("登录失败");
+          form.isLoading = false;
         }
       });
     };

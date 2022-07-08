@@ -12,20 +12,10 @@
         <el-input v-model="form.account" placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input
-          v-model="form.password"
-          placeholder="请输入密码"
-          show-password
-        />
+        <el-input v-model="form.password" placeholder="请输入密码" show-password />
       </el-form-item>
     </el-form>
-    <el-button
-      type="primary"
-      @click="onLogin(ruleFormRef)"
-      :loading-icon="Eleme"
-      :loading="form.isLoading"
-      >注册</el-button
-    >
+    <el-button type="primary" @click="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">注册</el-button>
     <div class="tips" @click="toLogin">已经注册过账号？前往登录页面</div>
   </div>
 </template>
@@ -34,6 +24,7 @@
 import { defineComponent, reactive, ref } from "vue";
 import { Eleme } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
+import { registerApi } from "@/api/api.js";
 export default defineComponent({
   name: "LoginCom",
   setup(props, context) {
@@ -58,21 +49,41 @@ export default defineComponent({
         { min: 5, max: 10, message: "密码长度限制为5~10！", trigger: "blur" },
       ],
     });
-    const onLogin = async (formEl) => {
+    const onRegister = async (formEl) => {
       if (!formEl) return;
-      await formEl.validate((valid, fields) => {
+      await formEl.validate(async (valid) => {
         if (valid) {
           form.isLoading = true;
-          setTimeout(() => {
-            form.isLoading = false;
-            ElMessage({
-              message: "注册成功",
-              type: "success",
+          try {
+            const { data } = await registerApi({
+              uname: form.uname,
+              account: form.account,
+              password: form.password,
             });
-            context.emit("changeCom", true);
-          }, 2000);
+            console.log(data);
+            if (data.code == 10001) {
+              ElMessage({
+                message: data.msg,
+                type: "success",
+              });
+              form.isLoading = false;
+              toLogin();
+            } else {
+              ElMessage.warning({
+                message: data.msg,
+                type: "warning",
+              });
+              form.isLoading = false;
+            }
+          } catch (error) {
+            ElMessage.warning({
+              message: "登录失败",
+              type: "warning",
+            });
+            form.isLoading = false;
+          }
         } else {
-          console.log("注册失败", fields);
+          ElMessage.error("登录失败");
         }
       });
     };
@@ -80,7 +91,7 @@ export default defineComponent({
       context.emit("changeCom", true); // 传递给父组件，切换组件为登录组件
     };
 
-    return { ruleFormRef, form, rules, onLogin, toLogin, Eleme };
+    return { ruleFormRef, form, rules, onRegister, toLogin, Eleme };
   },
 });
 </script>
