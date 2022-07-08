@@ -5,20 +5,17 @@ if (isProduction) {
   externals = {
     vue: "Vue",
     "element-plus": "ElementPlus",
-    moment: "moment",
     "vue-router": "VueRouter", // 注意这个是router文件中导入的路由源头，main.js中的router不是源头，而是从这个router文件中导入的
     axios: "axios", // 在组件中import导入的依赖也会被检测到
   };
   cdn = {
-    css: ["https://cdn.staticfile.org/element-plus/1.0.2-beta.63/theme-chalk/index.css"],
+    css: ["https://cdn.staticfile.org/element-plus/2.2.6/index.css"],
     js: [
       // vue must at first! vue必须写在最前面
-      "https://cdn.staticfile.org/vue/3.2.31/vue.global.prod.min.js", // vue.js
-      "https://cdn.staticfile.org/moment.js/2.19.3/moment.min.js",
-      "https://cdn.staticfile.org/moment.js/2.19.3/locale/zh-cn.js", // moment 中文
-      "https://cdn.staticfile.org/vue-router/4.0.14/vue-router.global.prod.min.js", // vue-router
-      "https://cdn.staticfile.org/axios/0.26.1/axios.min.js", // axios
-      "https://cdn.staticfile.org/element-plus/1.0.2-beta.63/index.full.min.js",
+      "https://cdn.staticfile.org/vue/3.0.0/vue.global.prod.js", // vue.js
+      "https://cdn.staticfile.org/vue-router/4.0.0/vue-router.global.prod.js", // vue-router
+      "https://cdn.staticfile.org/axios/0.27.2/axios.min.js", // axios
+      "https://cdn.staticfile.org/element-plus/2.2.6/index.full.min.js",
     ],
   };
 }
