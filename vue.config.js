@@ -12,10 +12,10 @@ if (isProduction) {
     css: ["https://cdn.staticfile.org/element-plus/2.2.6/index.css"],
     js: [
       // vue must at first! vue必须写在最前面
-      "https://cdn.staticfile.org/vue/3.0.0/vue.global.prod.js", // vue.js
+      "https://cdn.staticfile.org/vue/3.2.30/vue.runtime.global.prod.min.js", // vue.js
       "https://cdn.staticfile.org/vue-router/4.0.0/vue-router.global.prod.js", // vue-router
       "https://cdn.staticfile.org/axios/0.27.2/axios.min.js", // axios
-      "https://cdn.staticfile.org/element-plus/2.2.6/index.full.min.js",
+      "https://cdn.staticfile.org/element-plus/2.2.6/index.full.js",
     ],
   };
 }
@@ -46,7 +46,7 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-    // 将定义好的cdn样式文件/JS文件使用link和script标签导入index.html中
+    // 将定义好的cdn文件使用link和script标签导入index.html中
     config.plugin("preload").tap(() => [
       {
         rel: "preload",
@@ -54,7 +54,7 @@ module.exports = {
         include: "initial",
       },
     ]);
-    // 注入cdn变量 (打包时会执行)
+    // 注入cdn变量 (打包时会执行)，注意需要在index.html中配置过代码才能生效
     config.plugin("html").tap((args) => {
       args[0].cdn = cdn; // 配置cdn给插件
       return args;
