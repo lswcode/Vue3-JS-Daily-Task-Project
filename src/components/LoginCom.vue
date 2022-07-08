@@ -9,10 +9,20 @@
         <el-input v-model="form.account" placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" show-password placeholder="请输入密码" />
+        <el-input
+          v-model="form.password"
+          show-password
+          placeholder="请输入密码"
+        />
       </el-form-item>
     </el-form>
-    <el-button type="primary" @click="onLogin(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">登录</el-button>
+    <el-button
+      type="primary"
+      @click="onLogin(ruleFormRef)"
+      :loading-icon="Eleme"
+      :loading="form.isLoading"
+      >登录</el-button
+    >
     <div class="tips" @click="toRegister">还没有注册账号？新用户注册</div>
   </div>
 </template>
@@ -140,7 +150,7 @@ export default defineComponent({
   }
 }
 
-.login-com /deep/ .el-form-item__label {
+:deep(.el-form-item__label) {
   width: unset !important;
 }
 </style>

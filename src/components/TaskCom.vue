@@ -3,17 +3,28 @@
     <el-card class="box-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="iconfont icon-wenzhangbianji" style="fontSize: 17px"> 创建任务</span>
+          <span class="iconfont icon-wenzhangbianji" style="fontsize: 17px">
+            创建任务</span
+          >
         </div>
       </template>
       <div class="iconfont icon-icon-"></div>
     </el-card>
 
-    <el-card class="box-card" :style="state.checked?'border:1px solid #409eff;color:#409eff':''" shadow="hover">
+    <el-card
+      class="box-card"
+      :style="state.checked ? 'border:1px solid #409eff;color:#409eff' : ''"
+      shadow="hover"
+    >
       <template #header>
         <div class="card-header">
-          <span style="fontSize: 17px">锻炼</span>
-          <el-checkbox v-model="state.checked" :label="state.checked ? '已完成' : '未完成'" size="large" border />
+          <span style="fontsize: 17px">锻炼</span>
+          <el-checkbox
+            v-model="state.checked"
+            :label="state.checked ? '已完成' : '未完成'"
+            size="large"
+            border
+          />
         </div>
       </template>
       <div>描述内容</div>
