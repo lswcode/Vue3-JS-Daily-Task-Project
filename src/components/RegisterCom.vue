@@ -12,20 +12,10 @@
         <el-input v-model="form.account" placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input
-          v-model="form.password"
-          placeholder="请输入密码"
-          show-password
-        />
+        <el-input v-model="form.password" placeholder="请输入密码" show-password />
       </el-form-item>
     </el-form>
-    <el-button
-      type="primary"
-      @click="onRegister(ruleFormRef)"
-      :loading-icon="Eleme"
-      :loading="form.isLoading"
-      >注册</el-button
-    >
+    <el-button type="primary" @click="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">注册</el-button>
     <div class="tips" @click="toLogin">已经注册过账号？前往登录页面</div>
   </div>
 </template>
@@ -94,6 +84,7 @@ export default defineComponent({
           }
         } else {
           ElMessage.error("登录失败");
+          form.isLoading = false;
         }
       });
     };
