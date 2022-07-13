@@ -21,7 +21,7 @@ if (isProduction) {
 }
 
 module.exports = {
-  publicPath: "./",
+  publicPath: "/", // 项目打包部署时还是要改成/，如果使用./会导致nginx处理history模式的代码出错
   devServer: {
     port: 8080,
     host: "0.0.0.0", // 设置为0.0.0.0后，同个区域网ip的人都可以访问到
