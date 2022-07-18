@@ -6,10 +6,10 @@
     </div>
     <el-form :model="form" label-width="120px" :rules="rules" ref="ruleFormRef">
       <el-form-item label="账号" prop="account">
-        <el-input v-model="form.account" placeholder="请输入账号" />
+        <el-input v-model="form.account" placeholder="请输入账号" @keyup.enter="onLogin(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" show-password placeholder="请输入密码" />
+        <el-input v-model="form.password" show-password placeholder="请输入密码" @keyup.enter="onLogin(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
       </el-form-item>
     </el-form>
     <el-button type="primary" @click="onLogin(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">登录</el-button>
