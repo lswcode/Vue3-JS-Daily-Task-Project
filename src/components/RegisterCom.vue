@@ -6,13 +6,13 @@
     </div>
     <el-form :model="form" label-width="120px" :rules="rules" ref="ruleFormRef">
       <el-form-item label="昵称" prop="uname">
-        <el-input v-model="form.uname" placeholder="请输入昵称" />
+        <el-input v-model="form.uname" placeholder="请输入昵称" @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
       </el-form-item>
       <el-form-item label="账号" prop="account">
-        <el-input v-model="form.account" placeholder="请输入账号" />
+        <el-input v-model="form.account" placeholder="请输入账号" @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" placeholder="请输入密码" show-password />
+        <el-input v-model="form.password" placeholder="请输入密码" show-password @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
       </el-form-item>
     </el-form>
     <el-button type="primary" @click="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">注册</el-button>
