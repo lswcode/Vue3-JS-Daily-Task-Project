@@ -77,13 +77,13 @@ export default defineComponent({
             }
           } catch (error) {
             ElMessage.warning({
-              message: "登录失败",
+              message: "注册失败",
               type: "warning",
             });
             form.isLoading = false;
           }
         } else {
-          ElMessage.error("登录失败");
+          ElMessage.error("注册失败");
           form.isLoading = false;
         }
       });
