@@ -23,8 +23,6 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.app {
-}
 .page {
   padding-top: 60px;
 }
