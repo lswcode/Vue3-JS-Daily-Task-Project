@@ -3,7 +3,7 @@
     <TopNavigationVue class="nav" />
     <!--缓存用户页面状态，页面跳转后，依旧保持之前的页面状态-->
     <router-view v-slot="{ Component }">
-      <keep-alive include="Home">
+      <keep-alive include="Layout">
         <component :is="Component" class="page" />
       </keep-alive>
     </router-view>

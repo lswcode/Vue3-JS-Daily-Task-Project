@@ -6,13 +6,17 @@
     </div>
     <el-form :model="form" label-width="120px" :rules="rules" ref="ruleFormRef">
       <el-form-item label="昵称" prop="uname">
-        <el-input v-model="form.uname" placeholder="请输入昵称" @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
+        <el-input v-model="form.uname" placeholder="请输入昵称" @keyup.enter="onRegister(ruleFormRef)" />
       </el-form-item>
       <el-form-item label="账号" prop="account">
-        <el-input v-model="form.account" placeholder="请输入账号" @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
+        <el-input v-model="form.account" placeholder="请输入账号" @keyup.enter="onRegister(ruleFormRef)" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" placeholder="请输入密码" show-password @keyup.enter="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading" />
+        <el-input v-model="form.password" placeholder="请输入密码" show-password @keyup.enter="onRegister(ruleFormRef)" />
+      </el-form-item>
+      <el-form-item label="密码" prop="rePassword">
+        <el-input v-model="form.rePassword" placeholder="请再次输入密码" show-password @keyup.enter="onRegister(ruleFormRef)">
+        </el-input>
       </el-form-item>
     </el-form>
     <el-button type="primary" @click="onRegister(ruleFormRef)" :loading-icon="Eleme" :loading="form.isLoading">注册</el-button>
@@ -33,6 +37,7 @@ export default defineComponent({
       uname: "",
       account: "",
       password: "",
+      rePassword: "",
       isLoading: false,
     });
     const rules = reactive({
@@ -47,6 +52,21 @@ export default defineComponent({
       password: [
         { required: true, message: "密码不能为空！", trigger: "blur" },
         { min: 5, max: 10, message: "密码长度限制为5~10！", trigger: "blur" },
+      ],
+      rePassword: [
+        {
+          required: true,
+          validator: (rule, value, callback) => {
+            if (value === "") {
+              callback(new Error("请再次输入密码"));
+            } else if (value != form.password) {
+              callback(new Error("两次输入密码不一致!"));
+            } else {
+              callback();
+            }
+          },
+          trigger: "blur",
+        },
       ],
     });
     const onRegister = async (formEl) => {

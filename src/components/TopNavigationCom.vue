@@ -6,13 +6,7 @@
     </router-link>
 
     <div class="right">
-      <div
-        v-for="item in navgationArr"
-        @click="$router.push(item.path)"
-        :key="item.id"
-        :class="item.icon"
-        @mouseover="mouseoverFun"
-      >
+      <div v-for="item in navgationArr" @click="$router.push(item.path)" :key="item.id" :class="item.icon" @mouseover="mouseoverFun">
         {{ item.name }}
       </div>
     </div>
@@ -20,7 +14,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue";
+import { defineComponent, onBeforeMount, reactive } from "vue";
 
 export default defineComponent({
   name: "TopNavigationCom",
@@ -45,6 +39,7 @@ export default defineComponent({
         icon: "iconfont icon-iconset0103",
       },
     ]);
+    onBeforeMount(() => {});
 
     return { navgationArr };
   },
