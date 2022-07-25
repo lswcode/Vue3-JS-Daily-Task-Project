@@ -3,28 +3,18 @@
     <el-card class="box-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="iconfont icon-wenzhangbianji" style="fontsize: 17px">
-            创建任务</span
-          >
+          <span class="iconfont icon-wenzhangbianji" style="fontsize: 17px" @click="testCookieFun">
+            创建任务</span>
         </div>
       </template>
       <div class="iconfont icon-icon-"></div>
     </el-card>
 
-    <el-card
-      class="box-card"
-      :style="state.checked ? 'border:1px solid #409eff;color:#409eff' : ''"
-      shadow="hover"
-    >
+    <el-card class="box-card" :style="state.checked ? 'border:1px solid #409eff;color:#409eff' : ''" shadow="hover">
       <template #header>
         <div class="card-header">
           <span style="fontsize: 17px">锻炼</span>
-          <el-checkbox
-            v-model="state.checked"
-            :label="state.checked ? '已完成' : '未完成'"
-            size="large"
-            border
-          />
+          <el-checkbox v-model="state.checked" :label="state.checked ? '已完成' : '未完成'" size="large" border />
         </div>
       </template>
       <div>描述内容</div>
@@ -34,14 +24,18 @@
 
 <script>
 import { defineComponent, reactive } from "vue";
-
+import { testCookieApi } from "@/api/api.js";
 export default defineComponent({
   name: "TaskCom",
   setup() {
     const state = reactive({
       checked: false,
     });
-    return { state };
+    const testCookieFun = async () => {
+      const { data } = await testCookieApi();
+      console.log(data);
+    };
+    return { state, testCookieFun };
   },
 });
 </script>

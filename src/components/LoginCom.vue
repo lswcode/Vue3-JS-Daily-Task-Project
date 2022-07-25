@@ -55,7 +55,7 @@ export default defineComponent({
               password: form.password,
             });
             console.log(data);
-            if (data.code == 10001) {
+            if (data.code == 200) {
               ElMessage({
                 message: data.msg,
                 type: "success",

@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "@/store/index";
 import router from "@/router";
 const request = axios.create({
-  baseURL: process.env.NODE_ENV === "production" ? "https://task.lswweb.xyz/dailyTaskApi" : "api",
+  baseURL: process.env.NODE_ENV === "production" ? "https://task.lswweb.xyz/newGinApi" : "api",
   timeout: 8000, // 请求超时时间
 });
 

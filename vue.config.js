@@ -27,7 +27,7 @@ module.exports = {
     host: "0.0.0.0", // 设置为0.0.0.0后，同个区域网ip的人都可以访问到
     proxy: {
       "/api": {
-        target: "http://localhost:7777",
+        target: "http://localhost:8099",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "",

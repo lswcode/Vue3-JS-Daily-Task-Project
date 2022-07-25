@@ -5,8 +5,8 @@
       <span>注册异常请咨询管理员</span>
     </div>
     <el-form :model="form" label-width="120px" :rules="rules" ref="ruleFormRef">
-      <el-form-item label="昵称" prop="uname">
-        <el-input v-model="form.uname" placeholder="请输入昵称" @keyup.enter="onRegister(ruleFormRef)" />
+      <el-form-item label="昵称" prop="username">
+        <el-input v-model="form.username" placeholder="请输入昵称" @keyup.enter="onRegister(ruleFormRef)" />
       </el-form-item>
       <el-form-item label="账号" prop="account">
         <el-input v-model="form.account" placeholder="请输入账号" @keyup.enter="onRegister(ruleFormRef)" />
@@ -34,14 +34,14 @@ export default defineComponent({
   setup(props, context) {
     const ruleFormRef = ref();
     const form = reactive({
-      uname: "",
+      username: "",
       account: "",
       password: "",
       rePassword: "",
       isLoading: false,
     });
     const rules = reactive({
-      uname: [
+      username: [
         { required: true, message: "昵称不能为空！", trigger: "blur" },
         { min: 2, max: 8, message: "昵称限制为2~8！", trigger: "blur" },
       ],
@@ -76,19 +76,25 @@ export default defineComponent({
           form.isLoading = true;
           try {
             const { data } = await registerApi({
-              uname: form.uname,
+              username: form.username,
               account: form.account,
               password: form.password,
             });
             console.log(data);
-            if (data.code == 10001) {
+            if (data.code == 200) {
               ElMessage({
                 message: data.msg,
                 type: "success",
               });
               form.isLoading = false;
               toLogin();
-            } else {
+            } else if (data.code == 201) {
+              ElMessage.warning({
+                message: data.msg,
+                type: "warning",
+              });
+              form.isLoading = false;
+            } else if (data.code == 202) {
               ElMessage.warning({
                 message: data.msg,
                 type: "warning",

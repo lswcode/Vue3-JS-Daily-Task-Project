@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from "@/store/index.js";
 
 const routes = [
   {
@@ -59,20 +58,21 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title; // 自动修改页面标题
   }
-  const token = store.state.token;
-  // 校验非登录页面的登录状态
-  if (to.path == "/layout") {
-    console.log(token);
-    if (token) {
-      // 有可能会遇到在本地存储中随意伪造了一个token，也能通过这里的验证
-      // 所以还需要在请求拦截器中添加一个token验证，只有请求响应返回401，表示token无效，则清除token返回登录页
-      next();
-    } else {
-      next("/login");
-    }
-  } else {
-    next();
-  }
+  // const token = store.state.token;
+  // // 校验非登录页面的登录状态
+  // if (to.path == "/layout") {
+  //   console.log(token);
+  //   if (token) {
+  //     // 有可能会遇到在本地存储中随意伪造了一个token，也能通过这里的验证
+  //     // 所以还需要在请求拦截器中添加一个token验证，只有请求响应返回401，表示token无效，则清除token返回登录页
+  //     next();
+  //   } else {
+  //     next("/login");
+  //   }
+  // } else {
+  //   next();
+  // }
+  next();
 });
 
 export default router;
