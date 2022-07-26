@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from "vue";
+import { defineComponent, reactive, ref, getCurrentInstance } from "vue";
 import { useRouter } from "vue-router";
 import { Eleme } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
@@ -44,6 +44,7 @@ export default defineComponent({
       ],
     });
     const router = useRouter();
+    const { proxy } = getCurrentInstance(); // proxy 等同于Vue2的this
     const onLogin = async (formEl) => {
       if (!formEl) return;
       await formEl.validate(async (valid) => {
@@ -54,12 +55,12 @@ export default defineComponent({
               account: form.account,
               password: form.password,
             });
-            console.log(data);
             if (data.code == 200) {
               ElMessage({
                 message: data.msg,
                 type: "success",
               });
+              proxy.$mitt.emit("loginEvent", true);
               form.isLoading = false;
               router.push("/layout");
             } else {

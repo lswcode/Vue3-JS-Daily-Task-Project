@@ -16,9 +16,10 @@ export const registerApi = (user) => {
   });
 };
 
-export const testCookieApi = () => {
+// 用户登录后返回用户信息
+export const getUserInfo = () => {
   return request({
     method: "GET",
-    url: "/test",
+    url: `/userInfo`,
   });
 };

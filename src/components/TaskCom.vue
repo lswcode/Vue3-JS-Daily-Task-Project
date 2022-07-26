@@ -3,7 +3,7 @@
     <el-card class="box-card" shadow="hover">
       <template #header>
         <div class="card-header">
-          <span class="iconfont icon-wenzhangbianji" style="fontsize: 17px" @click="testCookieFun">
+          <span class="iconfont icon-wenzhangbianji" style="fontsize: 17px">
             创建任务</span>
         </div>
       </template>
@@ -24,18 +24,14 @@
 
 <script>
 import { defineComponent, reactive } from "vue";
-import { testCookieApi } from "@/api/api.js";
 export default defineComponent({
   name: "TaskCom",
   setup() {
     const state = reactive({
       checked: false,
     });
-    const testCookieFun = async () => {
-      const { data } = await testCookieApi();
-      console.log(data);
-    };
-    return { state, testCookieFun };
+
+    return { state };
   },
 });
 </script>

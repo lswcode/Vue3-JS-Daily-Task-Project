@@ -20,16 +20,15 @@
 
 <script>
 import { defineComponent } from "vue";
-import { getItem } from "@/utils/storage";
 import { useRouter } from "vue-router";
+import { getCookie } from "../utils/storage";
 export default defineComponent({
   name: "Home",
   setup() {
     const router = useRouter();
     const startFun = () => {
-      if (getItem("token")) {
-        // token存在则表示已经登录，直接跳转到任务页
-        router.push("/task");
+      if (getCookie("GIN_SESSIONID")) {
+        router.push("/layout");
       } else {
         router.push("/login"); // 没有登录则跳转到login页面
       }
